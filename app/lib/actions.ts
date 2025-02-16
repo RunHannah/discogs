@@ -1,8 +1,9 @@
 "use server";
 
 import { z } from "zod";
-import { FormSchema } from "../lib/formSchema";
-import { DiscogsResponse } from "../types/DiscogsResponse";
+import { FormSchema } from "@/app/lib/formSchema"
+import { DiscogsResponse } from "@/app/types/DiscogsResponse";
+import { Release } from "@/app/types/DiscogsRelease"
 
 const API_KEY = process.env.API_KEY;
 const API_SECRET = process.env.API_SECRET;
@@ -57,5 +58,23 @@ export const fetchSearch = async ({
     if (error instanceof Error) {
       console.log("Error: ", error.message);
     }
+  }
+};
+
+export const fetchRelease = async (releaseId: string) => {
+  try {
+    const response = await fetch(`${ROOT_URL}/releases/${releaseId}`);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch data: ${response.statusText}`);
+    }
+
+    const data: Release = await response.json();
+
+    return {
+      data: data,
+    };
+  } catch (error) {
+    console.error("Error fetching release data:", error);
   }
 };

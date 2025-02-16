@@ -23,7 +23,7 @@ export default function Page() {
       console.log("RESPONSE SUCCESS", response);
 
       if (response?.results) {
-        setSearchResults(response?.results);
+        setSearchResults(response.results);
       } else {
         setError(true);
       }
@@ -47,16 +47,18 @@ export default function Page() {
           <p>An error occurred</p>
         ) : (
           searchResults.map((result) => (
-            <CardWithImage
-              key={result.id}
-              title={result.title}
-              year={result.year}
-              country={result.country}
-              alt={result.title}
-              src={result.cover_image}
-              width={250}
-              height={250}
-            />
+            <Link key={result.id} href={`/releases/${result.id}`}>
+              <CardWithImage
+                key={result.id}
+                title={result.title}
+                year={result.year}
+                country={result.country}
+                alt={result.title}
+                src={result.cover_image}
+                width={250}
+                height={250}
+              />
+            </Link>
           ))
         )}
       </Grid>
