@@ -1,9 +1,9 @@
 "use server";
 
 import { z } from "zod";
-import { FormSchema } from "@/lib/formSchema"
+import { FormSchema } from "@/lib/formSchema";
 import { DiscogsResponse } from "@/types/DiscogsResponse";
-import { Release } from "@/types/DiscogsRelease"
+import { Release } from "@/types/DiscogsRelease";
 
 const API_KEY = process.env.API_KEY;
 const API_SECRET = process.env.API_SECRET;
@@ -52,12 +52,20 @@ export const fetchSearch = async ({
     // Handle known error types
     if (error instanceof z.ZodError) {
       console.log("Zod Error: ", error.errors);
+      return {
+        error: "Invalid input parameters. Please check your search criteria.",
+      };
     }
 
     // Handle general errors
     if (error instanceof Error) {
       console.log("Error: ", error.message);
+      return {
+        error: "An error occurred. Please try again later.",
+      };
     }
+
+    return { error: "Something went wrong. Please try again later." };
   }
 };
 
@@ -75,6 +83,14 @@ export const fetchRelease = async (releaseId: string) => {
       data: data,
     };
   } catch (error) {
-    console.error("Error fetching release data:", error);
+    // Handle general errors
+    if (error instanceof Error) {
+      console.log("Error: ", error.message);
+      return {
+        error: "An error occurred. Please try again later.",
+      };
+    }
+
+    return { error: "Something went wrong. Please try again later." };
   }
 };

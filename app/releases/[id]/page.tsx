@@ -10,21 +10,21 @@ import ReleaseImage from "@/components/ReleaseImage";
 
 export default function Page() {
   const [releaseData, setReleaseData] = useState<Release>();
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const { id } = useParams();
 
   const fetchReleaseData = async (id: string) => {
     try {
-      const results = await fetchRelease(id);
-      if (results?.data) {
-        setReleaseData(results.data);
-      } else {
-        setError(true);
-        console.log("Error fetching release data");
+      const response = await fetchRelease(id);
+      if (response?.data) {
+        setReleaseData(response.data);
       }
-    } catch (e) {
-      console.log("Release Page Error: ", e);
-      setError(true);
+
+      if (response?.error) {
+        setError(response.error);
+      }
+    } catch (error) {
+      console.log("Releases page Error: ", error);
     }
   };
 
@@ -36,6 +36,7 @@ export default function Page() {
 
   return (
     <div>
+      {error && <h1 className="text-center">😞 {error}</h1>}
       {releaseData ? (
         <>
           <ReleaseImage images={releaseData.images} />

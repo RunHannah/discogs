@@ -21,10 +21,12 @@ export type FetchMusicType = {
 export default function Page() {
   const [searchResults, setSearchResults] = useState<Result[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const [pagination, setPagination] = useState<Pagination>();
   const [artist, setArtist] = useState("TLC");
-  const [releaseTitle, setReleaseTitle] = useState("Ooooooohhh... On the TLC Tip");
+  const [releaseTitle, setReleaseTitle] = useState(
+    "Ooooooohhh... On the TLC Tip"
+  );
   const [genre, setGenre] = useState("Hip Hop");
 
   const fetchMusic = async ({
@@ -46,9 +48,12 @@ export default function Page() {
         setSearchResults(response.results);
         setPagination(response.pagination);
       }
-    } catch (e) {
-      console.log("Fetch Error: ", e);
-      setError(true);
+
+      if (response?.error) {
+        setError(response.error);
+      }
+    } catch (error: unknown) {
+      console.log("Fetch Error: ", error);
     } finally {
       setIsLoading(false);
     }
@@ -149,10 +154,16 @@ export default function Page() {
   };
 
   return (
-    <div className="flex flex-col items-center content-center">
-      <SearchForm onSubmit={handleOnSubmit} />
-      {renderPagination()}
-      {renderResults()}
-    </div>
+    <>
+      {error ? (
+        <h1 className="text-center">😞 {error}</h1>
+      ) : (
+        <div className="flex flex-col items-center content-center">
+          <SearchForm onSubmit={handleOnSubmit} />
+          {renderPagination()}
+          {renderResults()}
+        </div>
+      )}
+    </>
   );
 }
