@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetchSearch } from "@/lib/actions";
 import { PAGINATION } from "@/lib/constants";
+import Loading from "@/app/search/loading"
 import PaginationBar from "@/components/PaginationBar";
 import SearchResults from "@/components/SearchResults";
 import { Result, Pagination } from "@/types/DiscogsResponse";
@@ -100,14 +101,16 @@ export default function Search() {
   };
 
   return (
-    <div className="flex flex-col items-center content-center">
-      {error && <p className="text-center">😞 {error}</p>}
-      {renderPagination()}
-      {noResultsFound ? (
-        <p>Sorry no results were found. Please try again.</p>
-      ) : (
-        <SearchResults isLoading={isLoading} searchResults={searchResults} />
-      )}
-    </div>
+    <Suspense fallback={<Loading />}>
+      <div className="flex flex-col items-center content-center">
+        {error && <p className="text-center">😞 {error}</p>}
+        {renderPagination()}
+        {noResultsFound ? (
+          <p>Sorry no results were found. Please try again.</p>
+        ) : (
+          <SearchResults isLoading={isLoading} searchResults={searchResults} />
+        )}
+      </div>
+    </Suspense>
   );
 }
