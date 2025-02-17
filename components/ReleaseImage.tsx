@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Release } from "@/app/types/DiscogsRelease";
+import { Release } from "@/types/DiscogsRelease";
 
 type ReleaseImageType = Pick<Release, "images">;
 

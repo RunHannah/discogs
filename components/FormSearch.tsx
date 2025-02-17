@@ -14,7 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { FormSchema } from "@/app/lib/formSchema";
+import { FormSchema } from "@/lib/formSchema";
 
 interface FormProps {
   onSubmit: (data: z.infer<typeof FormSchema>) => void;

@@ -3,13 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
-import { fetchSearch } from "@/app/lib/actions";
+import { fetchSearch } from "@/lib/actions";
+import { PAGINATION } from "@/lib/constants"
 import SearchForm from "@/components/FormSearch";
 import CardWithImage from "@/components/CardWithImage";
 import Grid from "@/components/Grid";
-import { Result, Pagination } from "../types/DiscogsResponse";
+import { Result, Pagination } from "../../types/DiscogsResponse";
 import PaginationBar from "@/components/PaginationBar";
-import { PAGINATION } from "../lib/constants";
 
 export type FetchMusicType = {
   artist?: string;
