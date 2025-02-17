@@ -23,11 +23,9 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [pagination, setPagination] = useState<Pagination>();
-  const [artist, setArtist] = useState("TLC");
-  const [releaseTitle, setReleaseTitle] = useState(
-    "Ooooooohhh... On the TLC Tip"
-  );
-  const [genre, setGenre] = useState("Hip Hop");
+  const [artist, setArtist] = useState("");
+  const [releaseTitle, setReleaseTitle] = useState("");
+  const [genre, setGenre] = useState("");
 
   const fetchMusic = async ({
     artist,
@@ -60,24 +58,22 @@ export default function Page() {
   };
 
   // Trigger the fetch on initial render with default artist
-  useEffect(() => {
-    fetchMusic({ artist, releaseTitle, genre, page: 1 });
-  }, []);
+  // useEffect(() => {
+  //   fetchMusic({ artist, releaseTitle, genre, page: 1 });
+  // }, []);
 
   const handleOnSubmit = async (values: FetchMusicType) => {
-    if (values) {
-      const { artist, releaseTitle, genre, page } = values;
-      fetchMusic({
-        artist,
-        releaseTitle,
-        genre,
-        page,
-      });
+    const { artist, releaseTitle, genre, page } = values;
+    fetchMusic({
+      artist,
+      releaseTitle,
+      genre,
+      page,
+    });
 
-      setArtist(artist || "");
-      setReleaseTitle(releaseTitle || "");
-      setGenre(genre || "");
-    }
+    setArtist(artist || "");
+    setReleaseTitle(releaseTitle || "");
+    setGenre(genre || "");
   };
 
   const paginationOnClick = (action: string) => {
@@ -124,7 +120,7 @@ export default function Page() {
       return (
         <Grid>
           {Array.from({ length: 25 }).map((_, index) => (
-            <Skeleton key={index} className="h-[250px] w-[250px]" />
+            <Skeleton key={index} className="h-[200px] w-[200px]" />
           ))}
         </Grid>
       );
@@ -144,8 +140,8 @@ export default function Page() {
               country={result.country}
               alt={result.title}
               src={result.cover_image}
-              width={250}
-              height={250}
+              width={200}
+              height={200}
             />
           </Link>
         ))}
