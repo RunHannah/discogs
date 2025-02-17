@@ -35,11 +35,11 @@ export default function CardWithImage({
         {...props}
       />
       <CardHeader className="p-3">
-        <CardTitle>{title}</CardTitle>
+        <CardTitle>{title || "Unknown"}</CardTitle>
       </CardHeader>
       <CardContent className="pl-3 pb-3 pr-3 text-xs">
-        <p>Year: {year}</p>
-        <p>Country: {country}</p>
+        <p>Year: {year || "Unknown"}</p>
+        <p>Country: {country || "Unknown"}</p>
       </CardContent>
     </Card>
   );

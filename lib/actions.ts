@@ -12,7 +12,7 @@ const ROOT_URL = "https://api.discogs.com";
 
 export const fetchSearch = async ({
   artist,
-  release_title,
+  releaseTitle,
   genre,
   page,
 }: z.infer<typeof FormSchema>) => {
@@ -29,7 +29,7 @@ export const fetchSearch = async ({
   });
 
   if (artist) params.append("artist", artist);
-  if (release_title) params.append("release_title", release_title);
+  if (releaseTitle) params.append("release_title", releaseTitle);
   if (genre) params.append("genre", genre);
   if (page) params.append("page", page.toString());
 

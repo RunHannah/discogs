@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetchSearch } from "@/lib/actions";
-import { PAGINATION } from "@/lib/constants"
+import { PAGINATION } from "@/lib/constants";
 import SearchForm from "@/components/FormSearch";
 import CardWithImage from "@/components/CardWithImage";
 import Grid from "@/components/Grid";
@@ -23,9 +23,9 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [pagination, setPagination] = useState<Pagination>();
-  const [artist, setArtist] = useState("");
-  const [releaseTitle, setReleaseTitle] = useState("");
-  const [genre, setGenre] = useState("");
+  const [artist, setArtist] = useState("TLC");
+  const [releaseTitle, setReleaseTitle] = useState("Ooooooohhh... On the TLC Tip");
+  const [genre, setGenre] = useState("Hip Hop");
 
   const fetchMusic = async ({
     artist,
@@ -37,11 +37,10 @@ export default function Page() {
       setIsLoading(true);
       const response = await fetchSearch({
         artist,
-        release_title: releaseTitle,
+        releaseTitle,
         genre,
         page,
       });
-      console.log("RESPONSE SUCCESS", response);
 
       if (response?.results) {
         setSearchResults(response.results);
@@ -54,6 +53,11 @@ export default function Page() {
       setIsLoading(false);
     }
   };
+
+  // Trigger the fetch on initial render with default artist
+  useEffect(() => {
+    fetchMusic({ artist, releaseTitle, genre, page: 1 });
+  }, []);
 
   const handleOnSubmit = async (values: FetchMusicType) => {
     if (values) {
