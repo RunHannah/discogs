@@ -7,7 +7,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { PAGINATION } from "@/app/lib/constants";
+import { PAGINATION } from "@/lib/constants";
 
 interface PaginationBarProps {
   currentPage: number;

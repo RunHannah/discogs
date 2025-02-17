@@ -1,9 +1,9 @@
 "use server";
 
 import { z } from "zod";
-import { FormSchema } from "@/app/lib/formSchema"
-import { DiscogsResponse } from "@/app/types/DiscogsResponse";
-import { Release } from "@/app/types/DiscogsRelease"
+import { FormSchema } from "@/lib/formSchema"
+import { DiscogsResponse } from "@/types/DiscogsResponse";
+import { Release } from "@/types/DiscogsRelease"
 
 const API_KEY = process.env.API_KEY;
 const API_SECRET = process.env.API_SECRET;

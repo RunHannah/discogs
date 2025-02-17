@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Release } from "@/app/types/DiscogsRelease";
+import { Release } from "@/types/DiscogsRelease";
 
 type TrackListTableProps = Pick<Release, "title" | "tracklist">;
 

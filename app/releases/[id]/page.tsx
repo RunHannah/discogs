@@ -2,8 +2,8 @@
 
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { fetchRelease } from "@/app/lib/actions";
-import { Release } from "@/app/types/DiscogsRelease";
+import { fetchRelease } from "@/lib/actions";
+import { Release } from "@/types/DiscogsRelease";
 import TrackListTable from "@/components/TrackListTable";
 import ReleaseDetails from "@/components/ReleaseDetails";
 import ReleaseImage from "@/components/ReleaseImage";
