@@ -22,7 +22,7 @@ export default function CardWithImage({
   ...props
 }: CardWithImageProps) {
   return (
-    <Card className="max-w-[250px] flex flex-col h-fit">
+    <Card className="max-w-[200px] flex flex-col h-fit">
       <Image
         src={src}
         alt={alt}
