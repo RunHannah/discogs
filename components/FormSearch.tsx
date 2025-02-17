@@ -25,7 +25,7 @@ export default function SearchForm({ onSubmit }: FormProps) {
     resolver: zodResolver(FormSchema),
     defaultValues: {
       artist: "",
-      release_title: "",
+      releaseTitle: "",
       genre: "",
     },
   });
@@ -51,7 +51,7 @@ export default function SearchForm({ onSubmit }: FormProps) {
                 <FormControl>
                   <Input
                     type="text"
-                    placeholder="pj harvey"
+                    placeholder="TLC"
                     {...form.register("artist")}
                     {...field}
                   />
@@ -65,14 +65,14 @@ export default function SearchForm({ onSubmit }: FormProps) {
           />
           <FormField
             control={form.control}
-            name="release_title"
+            name="releaseTitle"
             render={({ field }) => (
               <FormItem className="ml-5 mr-5">
                 <FormLabel>Release Title</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="is this desire"
-                    {...form.register("release_title")}
+                    placeholder="Ooooooohhh... On the TLC Tip"
+                    {...form.register("releaseTitle")}
                     {...field}
                   />
                 </FormControl>
@@ -92,7 +92,7 @@ export default function SearchForm({ onSubmit }: FormProps) {
                 <FormLabel>Genre</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="rock"
+                    placeholder="Hip Hop"
                     {...form.register("genre")}
                     {...field}
                   />

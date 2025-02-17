@@ -15,12 +15,12 @@ export default function ReleaseDetails({
 }: ReleaseDetailsType) {
   return (
     <div>
-      <h2>Title: {title}</h2>
-      <h3>Released: {year}</h3>
-      <p>Country: {country}</p>
-      <p>Labels: {labels[0]?.name}</p>
-      <p>Genres: {genres.join(", ")}</p>
-      <p>Artists: {artists.map((artist) => artist.name).join(", ")}</p>
+      <h2>Title: {title || "Unknown"}</h2>
+      <h3>Released: {year || "Unknown"}</h3>
+      <p>Country: {country || "Unknown"}</p>
+      <p>Labels: {labels[0]?.name || "Unknown"}</p>
+      <p>Genres: {genres.join(", ") || "Unknown"}</p>
+      <p>Artists: {artists.map((artist) => artist.name).join(", ") || "Unknown"}</p>
     </div>
   );
 }
