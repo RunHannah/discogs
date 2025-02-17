@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Header from "@/components/Header"
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,9 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="mx-auto text-center mt-5 mb-5">
-          <h1 className="sm:text-xl md:text-3xl lg:text-5xl">Search for music on Discogs</h1>
-        </header>
+        <Header />
         <main>{children}</main>
       </body>
     </html>
