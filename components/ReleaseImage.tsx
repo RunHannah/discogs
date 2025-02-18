@@ -4,14 +4,16 @@ import { Release } from "@/types/DiscogsRelease";
 type ReleaseImageType = Pick<Release, "images">;
 
 export default function ReleaseImage({ images }: ReleaseImageType) {
-  const albumImage = (
-    <Image src={images[0].uri} alt="Album Image" width={150} height={150} />
-  );
-  const noImageAvailable = (
-    <div className="w-[150px] h-[150px] border-t-indigo-100 flex">
-      No Image Available
-    </div>
-  );
+  const imageSrc =
+    images && images[0] ? images[0].uri : "https://placehold.co/150x150.png";
 
-  return <>{images.length ? albumImage : noImageAvailable}</>;
+  return (
+    <Image
+      className="h-fit"
+      src={imageSrc}
+      alt="Album Image"
+      width={150}
+      height={150}
+    />
+  );
 }

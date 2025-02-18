@@ -22,13 +22,12 @@ export default function CardWithImage({
   ...props
 }: CardWithImageProps) {
   return (
-    <Card className="max-w-[200px] flex flex-col h-fit">
+    <Card className="max-w-[200px] mt-2 mb-2 flex flex-col h-fit rounded-none">
       <Image
         src={src}
         alt={alt}
         width={width}
         height={height}
-        className={"rounded-lg shadow-md"}
         loading="lazy"
         placeholder="blur"
         blurDataURL={"/placeholder.svg?height=50&width=50"}

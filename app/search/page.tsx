@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetchSearch } from "@/lib/actions";
 import { PAGINATION } from "@/lib/constants";
-import Loading from "@/app/search/loading"
+import Loading from "@/app/search/loading";
 import PaginationBar from "@/components/PaginationBar";
 import SearchResults from "@/components/SearchResults";
 import { Result, Pagination } from "@/types/DiscogsResponse";
@@ -39,6 +39,10 @@ export default function Search() {
         page,
       });
 
+      if (response?.error) {
+        setError(response.error);
+      }
+
       if (response?.results?.length === 0) {
         setNoResultsFound(true);
       }
@@ -46,10 +50,6 @@ export default function Search() {
       if (response.results && response?.results.length > 0) {
         setSearchResults(response.results);
         setPagination(response.pagination);
-      }
-
-      if (response?.error) {
-        setError(response.error);
       }
     } catch (error: unknown) {
       console.error("Fetch Error: ", error);
@@ -102,7 +102,7 @@ export default function Search() {
 
   return (
     <Suspense fallback={<Loading />}>
-      <div className="flex flex-col items-center content-center">
+      <div>
         {error && <p className="text-center">😞 {error}</p>}
         {renderPagination()}
         {noResultsFound ? (

@@ -14,7 +14,7 @@ export default function SearchResults({
   searchResults,
 }: SearchResultsProps) {
   return (
-    <>
+    <div className="max-w-[1100px] m-auto pt-5">
       {isLoading ? (
         <Grid>
           {Array.from({ length: 25 }).map((_, index) => (
@@ -23,21 +23,28 @@ export default function SearchResults({
         </Grid>
       ) : (
         <Grid>
-          {searchResults.map((result) => (
-            <Link key={result.id} href={`/releases/${result.id}`}>
-              <CardWithImage
-                title={result.title}
-                year={result.year}
-                country={result.country}
-                alt={result.title}
-                src={result.cover_image}
-                width={200}
-                height={200}
-              />
-            </Link>
-          ))}
+          {searchResults.map((result) => {
+            const imageSrc = result.cover_image.endsWith('gif') ? "https://placehold.co/200x200.png" : result.cover_image
+            return (
+              <Link
+                className="w-fit h-fit"
+                key={result.id}
+                href={`/releases/${result.id}`}
+              >
+                <CardWithImage
+                  title={result.title}
+                  year={result.year}
+                  country={result.country}
+                  alt={result.title}
+                  src={imageSrc}
+                  width={200}
+                  height={200}
+                />
+              </Link>
+            );
+          })}
         </Grid>
       )}
-    </>
+    </div>
   );
 }
