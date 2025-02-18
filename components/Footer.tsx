@@ -11,7 +11,7 @@ export default function Footer() {
         rel="noopener noreferrer"
       >
         <Image
-          src="../discogs_logo_black.svg"
+          src="/discogs_logo_black.svg"
           alt="Discogs logo"
           className="pl-1 h-6 w-auto inline-block"
           title="Discogs API"
