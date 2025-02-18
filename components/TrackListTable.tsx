@@ -1,7 +1,6 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -12,12 +11,10 @@ import { Release } from "@/types/DiscogsRelease";
 type TrackListTableProps = Pick<Release, "title" | "tracklist">;
 
 export default function TrackListTable({
-  title,
   tracklist,
 }: TrackListTableProps) {
   return (
     <Table>
-      <TableCaption>{title}</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>Track</TableHead>
@@ -27,7 +24,7 @@ export default function TrackListTable({
       </TableHeader>
       <TableBody>
         {tracklist.map((track) => (
-          <TableRow key={track.position}>
+          <TableRow key={track.title}>
             <TableCell>{track.position}</TableCell>
             <TableCell>{track.title}</TableCell>
             <TableCell>{track.duration}</TableCell>

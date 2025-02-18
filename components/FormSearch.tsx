@@ -51,7 +51,7 @@ export default function SearchForm({ onSubmit }: FormProps) {
                   <Input
                     className="rounded-none"
                     type="text"
-                    placeholder="TLC"
+                    placeholder="Aqua"
                     {...form.register("artist")}
                     {...field}
                   />
@@ -69,7 +69,7 @@ export default function SearchForm({ onSubmit }: FormProps) {
                 <FormControl>
                   <Input
                   className="rounded-none"
-                    placeholder="Ooooooohhh... On the TLC Tip"
+                    placeholder="Aquarium"
                     {...form.register("releaseTitle")}
                     {...field}
                   />
@@ -88,7 +88,7 @@ export default function SearchForm({ onSubmit }: FormProps) {
                 <FormControl>
                   <Input
                   className="rounded-none"
-                    placeholder="Hip Hop"
+                    placeholder="Pop"
                     {...form.register("genre")}
                     {...field}
                   />
