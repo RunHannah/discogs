@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -39,26 +38,24 @@ export default function SearchForm({ onSubmit }: FormProps) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmitHandler)}
-        className="w-full max-w-[1350px] flex flex-col md:flex-row justify-between md:items-center p-2 text-purple-950"
+        className="w-full max-w-[850px] flex flex-col md:flex-row justify-center items-center p-2 text-white"
       >
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row items-center md:items-end">
           <FormField
             control={form.control}
             name="artist"
             render={({ field }) => (
-              <FormItem className="ml-5 mr-5">
+              <FormItem className="ml-3 mr-3">
                 <FormLabel>Artist</FormLabel>
                 <FormControl>
                   <Input
+                    className="rounded-none"
                     type="text"
                     placeholder="TLC"
                     {...form.register("artist")}
                     {...field}
                   />
                 </FormControl>
-                <FormDescription className="text-purple-950">
-                  Search by Artist
-                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -67,18 +64,16 @@ export default function SearchForm({ onSubmit }: FormProps) {
             control={form.control}
             name="releaseTitle"
             render={({ field }) => (
-              <FormItem className="ml-5 mr-5">
+              <FormItem className="ml-3 mr-3">
                 <FormLabel>Release Title</FormLabel>
                 <FormControl>
                   <Input
+                  className="rounded-none"
                     placeholder="Ooooooohhh... On the TLC Tip"
                     {...form.register("releaseTitle")}
                     {...field}
                   />
                 </FormControl>
-                <FormDescription className="text-purple-950">
-                  Search by Release Title
-                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -88,18 +83,16 @@ export default function SearchForm({ onSubmit }: FormProps) {
             control={form.control}
             name="genre"
             render={({ field }) => (
-              <FormItem className="ml-5 mr-5">
+              <FormItem className="ml-3 mr-3">
                 <FormLabel>Genre</FormLabel>
                 <FormControl>
                   <Input
+                  className="rounded-none"
                     placeholder="Hip Hop"
                     {...form.register("genre")}
                     {...field}
                   />
                 </FormControl>
-                <FormDescription className="text-purple-950">
-                  Search by Genre
-                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -110,13 +103,13 @@ export default function SearchForm({ onSubmit }: FormProps) {
               {form.formState.errors.artist.message}
             </p>
           )}
+          <Button
+            className="rounded-none text-purple-950 w-auto md:w-40 bg-slate-300 mt-4 md:mt-0 hover:bg-slate-400"
+            disabled={form.formState.isSubmitting}
+          >
+            {form.formState.isSubmitting ? "Searching..." : "Search"}
+          </Button>
         </div>
-        <Button
-          className="text-purple-950 w-40 bg-slate-300 mt-4 md:mt-0 hover:bg-slate-400"
-          disabled={form.formState.isSubmitting}
-        >
-          {form.formState.isSubmitting ? "Searching..." : "Search"}
-        </Button>
       </form>
     </Form>
   );
