@@ -16,7 +16,7 @@ export default function TrackListTable({
   tracklist,
 }: TrackListTableProps) {
   return (
-    <Table className="max-w-4xl mx-auto">
+    <Table>
       <TableCaption>{title}</TableCaption>
       <TableHeader>
         <TableRow>

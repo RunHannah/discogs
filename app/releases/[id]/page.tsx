@@ -35,10 +35,11 @@ export default function Page() {
   }, [id]);
 
   return (
-    <div>
+    <div className="max-w-[1000px] m-auto p-2">
       {error && <h1 className="text-center">😞 {error}</h1>}
       {releaseData ? (
         <>
+        <div className="flex flex-row mt-9 mb-9">
           <ReleaseImage images={releaseData.images} />
           <ReleaseDetails
             title={releaseData.title}
@@ -48,6 +49,7 @@ export default function Page() {
             genres={releaseData.genres}
             artists={releaseData.artists}
           />
+        </div>
           <TrackListTable
             title={releaseData.title}
             tracklist={releaseData.tracklist}

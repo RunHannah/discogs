@@ -1,4 +1,11 @@
 import { Release } from "@/types/DiscogsRelease";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@/components/ui/table";
 
 type ReleaseDetailsType = Pick<
   Release,
@@ -6,21 +13,46 @@ type ReleaseDetailsType = Pick<
 >;
 
 export default function ReleaseDetails({
-    title,
-    year,
-    country,
-    labels,
-    genres,
-    artists,
+  title,
+  year,
+  country,
+  labels,
+  genres,
+  artists,
 }: ReleaseDetailsType) {
   return (
-    <div>
-      <h2>Title: {title || "Unknown"}</h2>
-      <h3>Released: {year || "Unknown"}</h3>
-      <p>Country: {country || "Unknown"}</p>
-      <p>Labels: {labels[0]?.name || "Unknown"}</p>
-      <p>Genres: {genres.join(", ") || "Unknown"}</p>
-      <p>Artists: {artists.map((artist) => artist.name).join(", ") || "Unknown"}</p>
+    <div className="flex flex-col ml-7">
+      <h1 className="font-bold">{title}</h1>
+      <Table className="max-w-4xl mx-auto">
+        <TableBody>
+          <TableRow className="border-none">
+            <TableHead className="p-0 h-0">Released:</TableHead>
+            <TableCell className="p-0">{year || "Unknown"}</TableCell>
+          </TableRow>
+          <TableRow className="border-none">
+            <TableHead className="p-0 h-0">Country:</TableHead>
+            <TableCell className="p-0">{country || "Unknown"}</TableCell>
+          </TableRow>
+          <TableRow className="border-none">
+            <TableHead className="p-0 h-0">Labels:</TableHead>
+            <TableCell className="p-0">
+              {labels[0]?.name || "Unknown"}
+            </TableCell>
+          </TableRow>
+          <TableRow className="border-none">
+            <TableHead className="p-0 h-0">Genres:</TableHead>
+            <TableCell className="p-0">
+              {genres.join(", ") || "Unknown"}
+            </TableCell>
+          </TableRow>
+          <TableRow className="border-none">
+            <TableHead className="p-0 h-0">Artists:</TableHead>
+            <TableCell className="p-0">
+              {artists.map((artist) => artist.name).join(", ") || "Unknown"}
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
     </div>
   );
 }
