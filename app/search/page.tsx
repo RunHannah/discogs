@@ -86,7 +86,7 @@ export default function Search() {
   const renderPagination = () => {
     // show skeleton on initial search, not when paginating
     if (isLoading && searchResults.length === 0) {
-      return <Skeleton className="h-[36px] w-[300px]" />;
+      return <Skeleton className="h-[36px] w-[300px] m-auto mt-1" />;
     }
 
     if (pagination && pagination.pages > 1) {
@@ -102,15 +102,13 @@ export default function Search() {
 
   return (
     <Suspense fallback={<Loading />}>
-      <div>
-        {error && <p className="text-center">😞 {error}</p>}
-        {renderPagination()}
-        {noResultsFound ? (
-          <p>Sorry no results were found. Please try again.</p>
-        ) : (
-          <SearchResults isLoading={isLoading} searchResults={searchResults} />
-        )}
-      </div>
+      {error && <p className="text-center">😞 {error}</p>}
+      {renderPagination()}
+      {noResultsFound ? (
+        <p className="text-center">Sorry no results were found. Please try again.</p>
+      ) : (
+        <SearchResults isLoading={isLoading} searchResults={searchResults} />
+      )}
     </Suspense>
   );
 }
