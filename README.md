@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Music Search App
 
-## Getting Started
+A music search app that allows users to search for music releases by artist, release title, or genre using the Discogs API. The app displays search results, and when an item is clicked, it redirects the user to a detailed page showing track listings and additional information.
 
-First, run the development server:
+## Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **[Next.js](https://nextjs.org) 15** 
+- **React 19**
+- **TypeScript**
+- **Discogs API** - API to access Discogs music data
+- **React Hook Form** - A library for managing form state and validation
+- **Zod** - A TypeScript-first schema declaration and validation library
+- **Shadcn UI** - Component library for building UI with Tailwind CSS
+- **Tailwind CSS** - Utility-first CSS framework
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Search by Artist, Release Title, or Genre**: Search for music releases by different criteria.
+- **Results Display**: View a list of search results.
+- **Detailed Release View**: Click on an item to view more details, including track listings.
+- **Pagination**: Navigate through multiple pages of results.
+- **Responsive Design**: Mobile-friendly interface with Tailwind CSS.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Requirements
 
-## Learn More
+- **Discogs Developer Account**: You need to register for a developer account at [Discogs Developers](https://www.discogs.com/developers) to obtain your API key and secret.
+  
+## Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   git clone https://github.com/runhannah/music-search-app.git
+   cd music-search-app
+   npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Provide .env variables
 
-## Deploy on Vercel
+   ```bash
+   DISCOGS_API_KEY=your_api_key_here
+   DISCOGS_API_SECRET=your_api_secret_here
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Start the app
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   npm run dev
+
+4. Open http://localhost:3000
+
+

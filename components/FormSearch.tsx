@@ -56,7 +56,6 @@ export default function SearchForm({ onSubmit }: FormProps) {
                     {...field}
                   />
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />
@@ -68,13 +67,12 @@ export default function SearchForm({ onSubmit }: FormProps) {
                 <FormLabel>Release Title</FormLabel>
                 <FormControl>
                   <Input
-                  className="rounded-none"
+                    className="rounded-none"
                     placeholder="Aquarium"
                     {...form.register("releaseTitle")}
                     {...field}
                   />
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />
@@ -87,19 +85,18 @@ export default function SearchForm({ onSubmit }: FormProps) {
                 <FormLabel>Genre</FormLabel>
                 <FormControl>
                   <Input
-                  className="rounded-none"
+                    className="rounded-none"
                     placeholder="Pop"
                     {...form.register("genre")}
                     {...field}
                   />
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />
 
           {form.formState.errors.artist?.message && (
-            <p className="text-purple-9500 text-sm mt-2">
+            <p className="text-red-500 text-sm mt-2">
               {form.formState.errors.artist.message}
             </p>
           )}
