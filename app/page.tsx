@@ -44,9 +44,9 @@ export default function Page() {
   // Trigger the fetch on initial render with default artist
   useEffect(() => {
     fetchMusic({
-      artist: "tlc",
-      releaseTitle: "Ooooooohhh... On the TLC Tip",
-      genre: "hip hop",
+      artist: "Aqua",
+      releaseTitle: "Aquarium",
+      genre: "pop",
       page: 1,
     });
   }, []);
