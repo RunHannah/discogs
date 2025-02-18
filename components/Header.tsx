@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useRouter } from "next/navigation";
 import SearchForm from "@/components/FormSearch";
@@ -20,10 +20,8 @@ export default function Header() {
   };
 
   return (
-    <header className="flex flex-col justify-center items-center">
-      <h1 className="sm:text-xl md:text-3xl lg:text-5xl">
-        Search for music on Discogs
-      </h1>
+    <header className="flex flex-col md:flex-row justify-center items-center md:items-end p-2 bg-neutral-900">
+      <h1 className="ml-2 mr-2 text-3xl lg:text-4xl text-white">Music Search</h1>
       <SearchForm onSubmit={handleOnSubmit} />
     </header>
   );

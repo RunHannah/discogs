@@ -18,7 +18,7 @@ export default function SearchResults({
       {isLoading ? (
         <Grid>
           {Array.from({ length: 25 }).map((_, index) => (
-            <Skeleton key={index} className="h-[200px] w-[200px]" />
+            <Skeleton key={index} className="h-[200px] w-[200px] mt-2 mb-2" />
           ))}
         </Grid>
       ) : (
