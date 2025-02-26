@@ -23,7 +23,6 @@ export default function PaginationBar({
   return (
     <Pagination>
       <PaginationContent>
-        
         {/* Previous Button */}
         <PaginationItem>
           <PaginationPrevious

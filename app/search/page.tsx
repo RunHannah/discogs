@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetchSearch } from "@/lib/actions";
 import { PAGINATION } from "@/lib/constants";
-import Loading from "@/app/loading"
+import Loading from "@/app/loading";
 import PaginationBar from "@/components/PaginationBar";
 import SearchResults from "@/components/SearchResults";
 import { Result, Pagination } from "@/types/DiscogsResponse";
@@ -105,7 +105,9 @@ export default function Search() {
       {error && <p className="text-center mt-20">😞 {error}</p>}
       {renderPagination()}
       {noResultsFound ? (
-        <p className="text-center mt-20">Sorry no results were found. Please try again.</p>
+        <p className="text-center mt-20">
+          Sorry no results were found. Please try again.
+        </p>
       ) : (
         <SearchResults isLoading={isLoading} searchResults={searchResults} />
       )}

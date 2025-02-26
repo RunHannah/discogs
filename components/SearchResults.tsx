@@ -24,7 +24,9 @@ export default function SearchResults({
       ) : (
         <Grid>
           {searchResults.map((result) => {
-            const imageSrc = result.cover_image.endsWith('gif') ? "https://placehold.co/200x200.png" : result.cover_image
+            const imageSrc = result.cover_image.endsWith("gif")
+              ? "https://placehold.co/200x200.png"
+              : result.cover_image;
             return (
               <Link
                 className="w-fit h-fit"
