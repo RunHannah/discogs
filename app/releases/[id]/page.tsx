@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { fetchRelease } from "@/lib/actions";
@@ -7,6 +8,7 @@ import { Release } from "@/types/DiscogsRelease";
 import TrackListTable from "@/components/TrackListTable";
 import ReleaseDetails from "@/components/ReleaseDetails";
 import ReleaseImage from "@/components/ReleaseImage";
+import spinner from "@/public/loading-spinner.gif";
 
 export default function Page() {
   const [releaseData, setReleaseData] = useState<Release>();
@@ -39,24 +41,26 @@ export default function Page() {
       {error && <h1 className="text-center">😞 {error}</h1>}
       {releaseData ? (
         <>
-        <div className="flex flex-row mt-9 mb-9">
-          <ReleaseImage images={releaseData.images} />
-          <ReleaseDetails
-            title={releaseData.title}
-            year={releaseData.year}
-            country={releaseData.country}
-            labels={releaseData.labels}
-            genres={releaseData.genres}
-            artists={releaseData.artists}
-          />
-        </div>
+          <div className="flex flex-row mt-9 mb-9">
+            <ReleaseImage images={releaseData.images} />
+            <ReleaseDetails
+              title={releaseData.title}
+              year={releaseData.year}
+              country={releaseData.country}
+              labels={releaseData.labels}
+              genres={releaseData.genres}
+              artists={releaseData.artists}
+            />
+          </div>
           <TrackListTable
             title={releaseData.title}
             tracklist={releaseData.tracklist}
           />
         </>
       ) : (
-        <p>Loading...</p>
+        <div className="flex justify-center items-center h-screen">
+          <Image src={spinner} alt="loading..." height={80} width={80} />
+        </div>
       )}
     </div>
   );
