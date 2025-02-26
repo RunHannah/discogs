@@ -46,7 +46,7 @@ export default function Page() {
     fetchMusic({
       artist: "Aqua",
       releaseTitle: "Aquarium",
-      genre: "pop",
+      genre: "Pop",
       page: 1,
     });
   }, []);
@@ -54,7 +54,7 @@ export default function Page() {
   return (
     <>
       {error ? (
-        <h1 className="text-center">😞 {error}</h1>
+        <p className="text-center mt-20">😞 {error}</p>
       ) : (
         <SearchResults isLoading={isLoading} searchResults={searchResults} />
       )}
