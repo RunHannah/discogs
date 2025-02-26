@@ -1,7 +1,7 @@
 "use client";
 
+import { use } from "react";
 import Image from "next/image";
-import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { fetchRelease } from "@/lib/actions";
 import { Release } from "@/types/DiscogsRelease";
@@ -10,10 +10,10 @@ import ReleaseDetails from "@/components/ReleaseDetails";
 import ReleaseImage from "@/components/ReleaseImage";
 import spinner from "@/public/loading-spinner.gif";
 
-export default function Page() {
+export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const [releaseData, setReleaseData] = useState<Release>();
   const [error, setError] = useState("");
-  const { id } = useParams();
+  const { id } = use(params);
 
   const fetchReleaseData = async (id: string) => {
     try {

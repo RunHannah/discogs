@@ -10,9 +10,7 @@ import { Release } from "@/types/DiscogsRelease";
 
 type TrackListTableProps = Pick<Release, "title" | "tracklist">;
 
-export default function TrackListTable({
-  tracklist,
-}: TrackListTableProps) {
+export default function TrackListTable({ tracklist }: TrackListTableProps) {
   return (
     <Table>
       <TableHeader>
