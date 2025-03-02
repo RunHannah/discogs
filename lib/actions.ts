@@ -11,9 +11,7 @@ const PER_PAGE = 20;
 const ROOT_URL = "https://api.discogs.com";
 
 export const fetchSearch = async ({
-  artist,
-  releaseTitle,
-  genre,
+  query,
   page,
 }: z.infer<typeof FormSchema>) => {
   if (!API_KEY || !API_SECRET) {
@@ -26,11 +24,10 @@ export const fetchSearch = async ({
     key: API_KEY,
     secret: API_SECRET,
     per_page: PER_PAGE.toString(),
+    q: query,
+    type: "all",
   });
 
-  if (artist) params.append("artist", artist);
-  if (releaseTitle) params.append("release_title", releaseTitle);
-  if (genre) params.append("genre", genre);
   if (page) params.append("page", page.toString());
 
   try {

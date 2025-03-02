@@ -8,12 +8,10 @@ export default function Header() {
   const router = useRouter();
 
   const handleOnSubmit = async (values: SearchType) => {
-    const { artist, releaseTitle, genre, page } = values;
+    const { query, page } = values;
 
     const queryString = new URLSearchParams();
-    if (artist) queryString.append("artist", artist);
-    if (releaseTitle) queryString.append("release_title", releaseTitle);
-    if (genre) queryString.append("genre", genre);
+    if (query) queryString.append("q", query);
     if (page) queryString.append("page", page.toString());
 
     router.push(`/search?${queryString}`);

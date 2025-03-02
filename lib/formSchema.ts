@@ -1,16 +1,14 @@
 import { z } from "zod";
 
 export const BaseFormSchema = z.object({
-  artist: z.string().optional(),
-  releaseTitle: z.string().optional(),
-  genre: z.string().optional(),
+  query: z.string(),
   page: z.number().optional(),
 });
 
 export const FormSchema = BaseFormSchema.refine(
-  (data) => data.artist || data.releaseTitle || data.genre,
+  (data) => data.query.length > 0,
   {
-    message: "At least one field must be filled.",
-    path: ["artist"], // specify which field(s) to target in error
+    message: "Please provide a search query.",
+    path: ["query"], // specify which field(s) to target in error
   }
 );

@@ -19,23 +19,15 @@ export default function Search() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const searchParams = useSearchParams();
 
-  const artist = searchParams.get("artist") || "";
-  const releaseTitle = searchParams.get("releaseTitle") || "";
-  const genre = searchParams.get("genre") || "";
+  const query = searchParams.get("q") || "";
+
   const page = Number(searchParams.get("page")) || 1;
 
-  const fetchMusic = async ({
-    artist,
-    releaseTitle,
-    genre,
-    page,
-  }: SearchType) => {
+  const fetchMusic = async ({ query, page }: SearchType) => {
     try {
       setIsLoading(true);
       const response = await fetchSearch({
-        artist,
-        releaseTitle,
-        genre,
+        query,
         page,
       });
 
@@ -60,8 +52,8 @@ export default function Search() {
   };
 
   useEffect(() => {
-    fetchMusic({ artist, releaseTitle, genre, page });
-  }, [artist, releaseTitle, genre, page]);
+    fetchMusic({ query, page });
+  }, [query, page]);
 
   const paginationOnClick = (action: string) => {
     let newPage;
@@ -80,7 +72,7 @@ export default function Search() {
           return;
       }
     }
-    fetchMusic({ artist, releaseTitle, genre, page: newPage });
+    fetchMusic({ query, page: newPage });
   };
 
   const renderPagination = () => {

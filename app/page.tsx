@@ -11,18 +11,11 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const fetchMusic = async ({
-    artist,
-    releaseTitle,
-    genre,
-    page,
-  }: SearchType) => {
+  const fetchMusic = async ({ query, page }: SearchType) => {
     try {
       setIsLoading(true);
       const response = await fetchSearch({
-        artist,
-        releaseTitle,
-        genre,
+        query,
         page,
       });
 
@@ -41,12 +34,10 @@ export default function Page() {
     }
   };
 
-  // Trigger the fetch on initial render with default artist
+  // Trigger the fetch on initial render with default query
   useEffect(() => {
     fetchMusic({
-      artist: "Aqua",
-      releaseTitle: "Aquarium",
-      genre: "Pop",
+      query: "is this desire",
       page: 1,
     });
   }, []);
