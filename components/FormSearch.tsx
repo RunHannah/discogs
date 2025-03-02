@@ -4,13 +4,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { FormSchema } from "@/lib/formSchema";
 
@@ -22,9 +16,7 @@ export default function SearchForm({ onSubmit }: FormProps) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      artist: "",
-      releaseTitle: "",
-      genre: "",
+      query: "",
     },
   });
 
@@ -39,36 +31,18 @@ export default function SearchForm({ onSubmit }: FormProps) {
         onSubmit={form.handleSubmit(onSubmitHandler)}
         className="w-full max-w-[850px] flex flex-col md:flex-row justify-center items-center p-2 text-white"
       >
-        <div className="flex flex-col md:flex-row items-center md:items-end">
+        <div className="w-full flex flex-col md:flex-row items-center md:items-end">
           <FormField
             control={form.control}
-            name="artist"
+            name="query"
             render={({ field }) => (
-              <FormItem className="ml-3 mr-3">
-                <FormLabel>Artist</FormLabel>
+              <FormItem className="ml-3 mr-3 w-full">
                 <FormControl>
                   <Input
                     className="rounded-none"
                     type="text"
-                    placeholder="Aqua"
-                    {...form.register("artist")}
-                    {...field}
-                  />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="releaseTitle"
-            render={({ field }) => (
-              <FormItem className="ml-3 mr-3">
-                <FormLabel>Release Title</FormLabel>
-                <FormControl>
-                  <Input
-                    className="rounded-none"
-                    placeholder="Aquarium"
-                    {...form.register("releaseTitle")}
+                    placeholder="artist, album, track, genre, year, format..."
+                    {...form.register("query")}
                     {...field}
                   />
                 </FormControl>
@@ -76,31 +50,13 @@ export default function SearchForm({ onSubmit }: FormProps) {
             )}
           />
 
-          <FormField
-            control={form.control}
-            name="genre"
-            render={({ field }) => (
-              <FormItem className="ml-3 mr-3">
-                <FormLabel>Genre</FormLabel>
-                <FormControl>
-                  <Input
-                    className="rounded-none"
-                    placeholder="Pop"
-                    {...form.register("genre")}
-                    {...field}
-                  />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-
-          {form.formState.errors.artist?.message && (
+          {form.formState.errors.query?.message && (
             <p className="text-red-500 text-sm mt-2">
-              {form.formState.errors.artist.message}
+              {form.formState.errors.query.message}
             </p>
           )}
           <Button
-            className="rounded-none text-purple-950 w-auto md:w-40 bg-slate-300 mt-4 md:mt-0 hover:bg-slate-400"
+            className="rounded-none text-black w-auto md:w-40 bg-orange-200 mt-4 md:mt-0 hover:bg-yellow-600 hover:text-white"
             disabled={form.formState.isSubmitting}
           >
             {form.formState.isSubmitting ? "Searching..." : "Search"}
