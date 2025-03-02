@@ -39,7 +39,9 @@ export default function CardWithImage({
         {/* Text is hidden by default and appears on hover */}
         <div className="w-full h-full flex flex-col justify-center items-center text-center opacity-0 hover:opacity-100 transition-opacity duration-300">
           <CardHeader className="p-3">
-            <CardTitle>{title || "Unknown"}</CardTitle>
+            <CardTitle className="line-clamp-4 w-40">
+              {title || "Unknown"}
+            </CardTitle>
           </CardHeader>
           <CardContent className="pl-3 pb-3 pr-3 text-xs">
             <p>Year: {year || "Unknown"}</p>

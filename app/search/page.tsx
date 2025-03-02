@@ -18,9 +18,7 @@ export default function Search() {
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const searchParams = useSearchParams();
-
   const query = searchParams.get("q") || "";
-
   const page = Number(searchParams.get("page")) || 1;
 
   const fetchMusic = async ({ query, page }: SearchType) => {
@@ -81,7 +79,7 @@ export default function Search() {
       return <Skeleton className="h-[36px] w-[300px] m-auto mt-1" />;
     }
 
-    if (pagination && pagination.pages > 1) {
+    if (!noResultsFound && pagination && pagination.pages > 1) {
       return (
         <PaginationBar
           currentPage={pagination.page}
