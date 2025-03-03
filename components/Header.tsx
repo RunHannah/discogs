@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import SearchForm from "@/components/FormSearch";
 import { SearchType } from "@/types/Search";
@@ -19,9 +20,9 @@ export default function Header() {
 
   return (
     <header className="flex flex-col md:flex-row justify-center items-center md:items-end p-2 bg-neutral-900">
-      <h1 className="ml-2 mr-2 text-3xl lg:text-4xl text-white">
+      <Link href="/" className="ml-2 mr-2 text-3xl lg:text-4xl text-white">
         Music Search
-      </h1>
+      </Link>
       <SearchForm onSubmit={handleOnSubmit} />
     </header>
   );
