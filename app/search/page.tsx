@@ -1,57 +1,26 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
-import { fetchSearch } from "@/lib/actions";
 import { PAGINATION } from "@/lib/constants";
 import Loading from "@/app/loading";
 import PaginationBar from "@/components/PaginationBar";
 import SearchResults from "@/components/SearchResults";
-import { Result, Pagination } from "@/types/DiscogsResponse";
-import { SearchType } from "@/types/Search";
+import { useFetchMusic } from "@/hooks/useFetchMusic";
 
 export default function Search() {
-  const [searchResults, setSearchResults] = useState<Result[]>([]);
-  const [noResultsFound, setNoResultsFound] = useState(false);
-  const [pagination, setPagination] = useState<Pagination>();
-  const [error, setError] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const searchParams = useSearchParams();
   const query = searchParams.get("q") || "";
   const page = Number(searchParams.get("page")) || 1;
-
-  const fetchMusic = async ({ query, page }: SearchType) => {
-    try {
-      setIsLoading(true);
-      const response = await fetchSearch({
-        query,
-        page,
-      });
-
-      if (response?.error) {
-        setError(response.error);
-      }
-
-      if (response?.results?.length === 0) {
-        setNoResultsFound(true);
-      }
-
-      if (response.results && response?.results.length > 0) {
-        setSearchResults(response.results);
-        setPagination(response.pagination);
-      }
-    } catch (error: unknown) {
-      console.error("Fetch Error: ", error);
-      setError("Sorry, an error occurred. Please try again later.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchMusic({ query, page });
-  }, [query, page]);
+  const {
+    searchResults,
+    noResultsFound,
+    pagination,
+    error,
+    isLoading,
+    fetchMusic,
+  } = useFetchMusic({ query, page });
 
   const paginationOnClick = (action: string) => {
     let newPage;
