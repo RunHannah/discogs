@@ -8,7 +8,7 @@ export const useFetchMusic = ({ query, page }: SearchType) => {
   const [noResultsFound, setNoResultsFound] = useState(false);
   const [pagination, setPagination] = useState<Pagination>();
   const [error, setError] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const fetchMusic = async ({ query, page }: SearchType) => {
     try {
