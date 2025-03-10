@@ -44,6 +44,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
           <div className="flex flex-row mt-9 mb-9">
             <ReleaseImage images={releaseData.images} />
             <ReleaseDetails
+              id={releaseData.id}
               title={releaseData.title}
               year={releaseData.year}
               country={releaseData.country}
