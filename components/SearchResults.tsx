@@ -1,6 +1,6 @@
+import { motion } from "motion/react";
 import Link from "next/link";
 import Grid from "@/components/Grid";
-import { Skeleton } from "@/components/ui/skeleton";
 import CardWithImage from "@/components/CardWithImage";
 import { Result } from "@/types/DiscogsResponse";
 
@@ -13,26 +13,33 @@ export default function SearchResults({
   isLoading,
   searchResults,
 }: SearchResultsProps) {
+  const itemVariants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.8,
+    },
+    show: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 25,
+      },
+    },
+  };
+
   return (
     <div className="max-w-[1100px] m-auto pt-5">
-      {isLoading ? (
-        <Grid>
-          {Array.from({ length: 25 }).map((_, index) => (
-            <Skeleton key={index} className="h-[200px] w-[200px] mt-2 mb-2" />
-          ))}
-        </Grid>
-      ) : (
-        <Grid>
-          {searchResults.map((result) => {
-            const imageSrc = result.cover_image.endsWith("gif")
-              ? "https://placehold.co/200x200.png"
-              : result.cover_image;
-            return (
-              <Link
-                className="w-fit h-fit"
-                key={result.id}
-                href={`/releases/${result.id}`}
-              >
+      <Grid isLoading={isLoading}>
+        {searchResults.map((result) => {
+          const imageSrc = result.cover_image.endsWith("gif")
+            ? "https://placehold.co/200x200.png"
+            : result.cover_image;
+
+          return (
+            <motion.div key={result.id} variants={itemVariants}>
+              <Link className="w-fit h-fit" href={`/releases/${result.id}`}>
                 <CardWithImage
                   title={result.title}
                   year={result.year}
@@ -43,10 +50,10 @@ export default function SearchResults({
                   height={200}
                 />
               </Link>
-            );
-          })}
-        </Grid>
-      )}
+            </motion.div>
+          );
+        })}
+      </Grid>
     </div>
   );
 }
