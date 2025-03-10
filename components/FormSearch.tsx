@@ -29,7 +29,7 @@ export default function SearchForm({ onSubmit }: FormProps) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmitHandler)}
-        className="w-full max-w-[850px] flex flex-col md:flex-row justify-center items-center p-2 text-white"
+        className="w-[75%] xl:w-full max-w-[850px] flex flex-col md:flex-row justify-center items-center p-2 text-white"
       >
         <div className="w-full flex flex-col md:flex-row items-center md:items-end">
           <FormField
@@ -56,7 +56,7 @@ export default function SearchForm({ onSubmit }: FormProps) {
             </p>
           )}
           <Button
-            className="rounded-none text-black w-auto md:w-40 bg-orange-200 mt-4 md:mt-0 hover:bg-yellow-600 hover:text-white"
+            className="rounded-none font-teko text-xl text-black w-auto md:w-40 bg-orange-200 mt-4 md:mt-0 hover:bg-yellow-600 hover:text-white"
             disabled={form.formState.isSubmitting}
           >
             {form.formState.isSubmitting ? "Searching..." : "Search"}

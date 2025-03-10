@@ -20,7 +20,10 @@ export default function Header() {
 
   return (
     <header className="flex flex-col md:flex-row justify-center items-center md:items-end p-2 bg-neutral-900">
-      <Link href="/" className="ml-2 mr-2 text-3xl lg:text-4xl text-white">
+      <Link
+        href="/"
+        className="ml-2 mr-2 text-transition font-teko text-3xl lg:text-4xl xl:text-5xl text-white"
+      >
         Music Search
       </Link>
       <SearchForm onSubmit={handleOnSubmit} />

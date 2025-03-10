@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
+import { Teko } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
+const teko = Teko({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-teko",
+});
+
 export const metadata: Metadata = {
-  title: "Search Discogs",
+  title: "Music Search",
   description: "Search for music on Discogs",
 };
 
@@ -15,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="relative min-h-screen">
+      <body className={`${teko.variable} relative min-h-screen`}>
         <Header />
         <main className="pb-24">{children}</main>
         <Footer />
