@@ -9,10 +9,11 @@ import {
 
 type ReleaseDetailsType = Pick<
   Release,
-  "title" | "year" | "country" | "labels" | "genres" | "artists"
+  "id" | "title" | "year" | "country" | "labels" | "genres" | "artists"
 >;
 
 export default function ReleaseDetails({
+  id,
   title,
   year,
   country,
@@ -49,6 +50,19 @@ export default function ReleaseDetails({
             <TableHead className="p-0 h-0">Artists:</TableHead>
             <TableCell className="p-0">
               {artists.map((artist) => artist.name).join(", ") || "Unknown"}
+            </TableCell>
+          </TableRow>
+          <TableRow className="border-none">
+            <TableHead className="p-0 h-0">Shop:</TableHead>
+            <TableCell className="p-0">
+              <a
+                href={`https://www.discogs.com/release/${id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 fit-content bg-black text-white hover:bg-gray-700"
+              >
+                On Discogs
+              </a>
             </TableCell>
           </TableRow>
         </TableBody>
