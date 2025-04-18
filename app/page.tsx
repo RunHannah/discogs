@@ -5,7 +5,7 @@ import { useFetchMusic } from "@/hooks/useFetchMusic";
 
 export default function Page() {
   const { searchResults, error, isLoading } = useFetchMusic({
-    query: "is this desire",
+    query: "missy elliott the cookbook",
     page: 1,
   });
 
