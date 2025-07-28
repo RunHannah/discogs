@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import Grid from "@/components/Grid";
 import CardWithImage from "@/components/CardWithImage";
@@ -13,7 +13,7 @@ export default function SearchResults({
   isLoading,
   searchResults,
 }: SearchResultsProps) {
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: {
       opacity: 0,
       scale: 0.8,
